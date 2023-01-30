@@ -92,7 +92,7 @@ function App() {
           ))}
         </ul>
         {todos.length < 1 ? null : (
-          <p className={style.count}>{`You have ${todos.length} todos`}</p>
+          <p className={style.count}>{`You have ${todos.length} orders to fulfill`}</p>
         )}
       </div>
     </div>
