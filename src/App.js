@@ -116,7 +116,7 @@ function App() {
             onChange={(e) => setInput(e.target.value)}
             className={style.input}
             type='number'
-            placeholder='Add order'
+            placeholder='Add price'
           />
           <button className={style.button}>
             <AiOutlinePlus size={30} />
@@ -129,7 +129,7 @@ function App() {
             onChange={(e) => setInput(e.target.value)}
             className={style.input}
             type='boolean'
-            placeholder='Add order'
+            placeholder='Food or Drink'
           />
           <button className={style.button}>
             <AiOutlinePlus size={30} />
