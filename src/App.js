@@ -40,10 +40,38 @@ function App() {
     setInput('');
   };
 
+  //Create Price
+  const createPrice = async (e) => {
+    e.preventDefault(e);
+    if (input === '') {
+      alert('Please enter a valid todo');
+      return;
+    }
+    await addDoc(collection(db, 'todos'), {
+      text: input,
+      completed: false,
+    });
+    setInput('');
+  };
+
+  //Create Type
+  const createType = async (e) => {
+    e.preventDefault(e);
+    if (input === '') {
+      alert('Please enter a valid todo');
+      return;
+    }
+    await addDoc(collection(db, 'todos'), {
+      text: input,
+      completed: false,
+    });
+    setInput('');
+  };
+
   // Read todo from firebase
   useEffect(() => {
     const q = query(collection(db, 'todos'));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    const unsubscribe = onSnapshot(q, (querySnapshot) => { 
       let todosArr = [];
       querySnapshot.forEach((doc) => {
         todosArr.push({ ...doc.data(), id: doc.id });
@@ -81,6 +109,33 @@ function App() {
             <AiOutlinePlus size={30} />
           </button>
         </form>
+
+        <form onSubmit={createPrice} className={style.form}>
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className={style.input}
+            type='number'
+            placeholder='Add order'
+          />
+          <button className={style.button}>
+            <AiOutlinePlus size={30} />
+          </button>
+        </form>
+
+        <form onSubmit={createType} className={style.form}>
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className={style.input}
+            type='boolean'
+            placeholder='Add order'
+          />
+          <button className={style.button}>
+            <AiOutlinePlus size={30} />
+          </button>
+        </form>
+
         <ul>
           {todos.map((todo, index) => (
             <Todo
