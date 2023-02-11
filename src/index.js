@@ -7,8 +7,8 @@ import FrontEnd from './components/frontend/FrontEnd';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Backend collectionType="food_collection" itemType="foods" />
-    <Backend collectionType="drinks_collection" itemType="drinks" />
+    <Backend collectionType="food_collection" itemType="Foods" />
+    <Backend collectionType="drinks_collection" itemType="Drinks" />
     {/* <FrontEnd collectionType="food_collection" itemType="foods" />
     <FrontEnd collectionType="drinks_collection" itemType="drinks" /> */}
   </React.StrictMode>
