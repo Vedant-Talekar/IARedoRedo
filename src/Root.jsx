@@ -30,7 +30,7 @@ export default function Root() {
 
   return (
     <div className={style.bg}>
-      <div className="flex-column">
+     <div class="flex flex-col">
         <button onClick={clickHandler}>{buttonText}</button>
         <button onClick={cartButtonHandler}>Show Cart</button>
       </div>
