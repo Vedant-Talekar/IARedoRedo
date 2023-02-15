@@ -31,8 +31,10 @@ export default function Root() {
   return (
     <div className={style.bg}>
      <div class="flex flex-col">
-        <button onClick={clickHandler}>{buttonText}</button>
-        <button onClick={cartButtonHandler}>Show Cart</button>
+
+        <button class = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={clickHandler}>{buttonText}</button>
+        <button class = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={cartButtonHandler}>Show Cart</button>
+      
       </div>
 
       {showFrontEnd ? (
