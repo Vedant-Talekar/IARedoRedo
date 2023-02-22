@@ -9,7 +9,7 @@ const style = {
   text: `ml-2 cursor-pointer`,
   textComplete: `ml-2 cursor-pointer line-through`,
   button: `cursor-pointer flex items-center`,
-  buttonTwo: `border p-4 ml-2 bg-purple-500 text-slate-100`,
+  buttonTwo: `object-center border p-4 ml-2 bg-purple-500 text-slate-100`,
 };
 
 const Item = ({ item, deleteTodo, itemCost, itemAmount, itemName }) => {
@@ -62,9 +62,9 @@ const Item = ({ item, deleteTodo, itemCost, itemAmount, itemName }) => {
       <button className={style.buttonTwo} onClick={sendToCart}>
         Send to cart
       </button>
-      <button className={style.buttonTwo} onClick={console.log(cartData)}>
+      {/* <button className={style.buttonTwo} onClick={console.log(cartData)}>
         view console.log
-      </button>
+      </button> */}
     </div>
   );
 };

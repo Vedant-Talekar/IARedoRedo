@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 export default function Root() {
   const [showFrontEnd, setShowFrontEnd] = useState(false);
-  const [buttonText, setButtonText] = useState('Show Backend');
+  const [buttonText, setButtonText] = useState('Show Frontend');
   const [showCart, setShowCart] = useState(false);
 
   // statement ? if true : if false
@@ -14,9 +14,9 @@ export default function Root() {
   const clickHandler = () => {
     setShowFrontEnd(!showFrontEnd);
     if (showFrontEnd) {
-      setButtonText('Show Backend');
+      setButtonText('Show FrontEnd');
     } else {
-      setButtonText('Show Frontend');
+      setButtonText('Show Backend');
     }
   };
 
@@ -28,13 +28,17 @@ export default function Root() {
     bg: ` flex h-screen w-screen p-4 bg-gradient-to-r from-[#db1212] to-[#210c0c]`,
   };
 
-  return (
-    <div className={style.bg}>
-     <div class="flex flex-col">
+  
+ 
 
-        <button class = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={clickHandler}>{buttonText}</button>
-        <button class = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={cartButtonHandler}>Show Cart</button>
-      
+  return (
+
+    <div className={style.bg}>
+      <div className="flex-column" > 
+        <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l" onClick={clickHandler}>{buttonText}</button>
+        {showFrontEnd ? (   
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" onClick={cartButtonHandler}>Show Cart</button> 
+        ) : null}
       </div>
 
       {showFrontEnd ? (
@@ -55,3 +59,5 @@ export default function Root() {
     </div>
   );
 }
+
+
