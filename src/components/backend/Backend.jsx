@@ -49,6 +49,8 @@ function Backend({ collectionType, itemType }) {
     setItemAmount(0);
   };
 
+   
+
   // Read todo from firebase
   useEffect(() => {
     const q = query(collection(db, collectionType));
@@ -61,6 +63,8 @@ function Backend({ collectionType, itemType }) {
     });
     return () => unsubscribe();
   }, []);
+
+
 
   // Update todo in firebase
   // const toggleComplete = async (todo) => {
@@ -105,7 +109,7 @@ function Backend({ collectionType, itemType }) {
           <button className={style.button}>
             <AiOutlinePlus size={30} />
           </button>
-        </form>
+        </form>     
 
         {items.length < 1 ? null : (
           <p
@@ -126,6 +130,10 @@ function Backend({ collectionType, itemType }) {
           />
         ))}
       </ul>
+
+
+     
+    
     </div>
   );
 }
