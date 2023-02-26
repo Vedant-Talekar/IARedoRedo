@@ -29,6 +29,20 @@ import Swal from "sweetalert2";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { db } from "../firebase-config"; //check again later if its right 
+import Modal from '@mui/material/Modal';
+import AddForm from './AddForm';
+
+const style = {                         //https://mui.com/material-ui/react-modal/
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
 
 
 
@@ -40,6 +54,9 @@ export default function ProductList() {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [rows, setRows] = useState([]);
   const empCollectionRef = collection(db, "collectionType");
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     getUsers();
@@ -83,8 +100,87 @@ export default function ProductList() {
     getUsers();
   };
 
+  const filterData = (v) => {
+    if (v) {
+      setRows([v]);
+    } else {   
+        setRows([]);
+      getUsers();
+    }
+  };
+
   return (
+    <>
+    <div>
+
+      <Modal                                        //https://mui.com/material-ui/react-modal/
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        // calling addform here
+        <Box sx={style}>           
+            <AddForm/>                             
+        </Box>
+      </Modal>
+    </div>
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+         <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            sx={{ padding: "20px" }}
+          >
+            Products List
+          </Typography>
+          <Divider />
+          <Box height={10} />
+          <Stack direction="row" spacing={2} className="my-2 mb-2">
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={rows}
+              sx={{ width: 300 }}
+              onChange={(e, v) => filterData(v)}
+              getOptionLabel={(rows) => rows.category || ""}            //its set to show items based on category
+              renderInput={(params) => (
+                <TextField {...params} size="small" label="Search Products" />
+              )}
+            />
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            ></Typography>
+            <Button variant="contained" endIcon={<AddCircleIcon />} onClick={handleOpen}>
+              Add
+            </Button>
+          </Stack>
+          <Box height={10} />
+        <Box height={10} />
+          <Stack direction="row" spacing={2} className="my-2 mb-2">
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={rows}
+              sx={{ width: 300 }}
+              onChange={(e, v) => filterData(v)}
+              getOptionLabel={(rows) => rows.name || ""}
+              renderInput={(params) => (
+                <TextField {...params} size="small" label="Search Products" />
+              )}
+            />
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            ></Typography>
+            <Button variant="contained" endIcon={<AddCircleIcon />}>
+              Add
+            </Button>
+          </Stack>
+          <Box height={10} />
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -164,5 +260,7 @@ export default function ProductList() {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
+    </>
   );
+
 }
