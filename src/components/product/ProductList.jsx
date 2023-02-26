@@ -112,14 +112,13 @@ export default function ProductList() {
   return (
     <>
     <div>
-
       <Modal                                        //https://mui.com/material-ui/react-modal/
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        // calling addform here
+      
         <Box sx={style}>           
             <AddForm/>                             
         </Box>
@@ -260,7 +259,7 @@ export default function ProductList() {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
-    </>
+   </>
   );
 
 }
