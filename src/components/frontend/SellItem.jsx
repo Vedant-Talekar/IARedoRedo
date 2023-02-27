@@ -55,7 +55,7 @@ const Item = ({ item, deleteTodo, itemCost, itemAmount, itemName }) => {
         <li className={item.completed ? style.liComplete : style.li}>
           {/* Space output from each other  */}
           <div className={style.row}>
-           Item Name:  {itemNameState} Item Cost:  ${itemCostState} itemAmount: {' '} {itemAmountState} Amount in Cart: {amountInCart} Total cost: {amountInCart * itemCostState}
+           Item Name:  {itemNameState} Item Cost:  ${itemCostState} Item Amount: {' '} {itemAmountState} Amount in Cart: {amountInCart} Total cost: {amountInCart * itemCostState}
           </div>
         </li>
       </button>

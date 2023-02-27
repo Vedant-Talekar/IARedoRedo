@@ -15,7 +15,7 @@ const Item = ({ item, deleteTodo, itemCost, itemAmount, itemName }) => {
     <li className={item.completed ? style.liComplete : style.li}>
       <div className={style.row}>
         {' '}
-        Item Cost: ${itemCost} itemAmount:  {itemAmount} itemName:  {itemName}{' '}
+        Item Cost: ${itemCost} Item Amount:  {itemAmount} Item Name:  {itemName}{' '}
       </div>
       <button onClick={() => deleteTodo(item.id)}>{<FaRegTrashAlt />}</button>
     </li>

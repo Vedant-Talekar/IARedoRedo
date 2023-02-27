@@ -13,12 +13,12 @@ import {
 } from 'firebase/firestore';
 
 const style = {
-  container: `bg-slate-100 max-w-[600px] w-full m-auto rounded-md shadow-xl p-7`,
+  container: `bg-neutral-200 max-w-[600px] w-full m-auto rounded-md shadow-xl p-7`,
   heading: `text-3xl font-bold text-center text-gray-800 p-2 `,
   form: `flex justify-between`,
-  input: `border p-1 w-full text-l`,
+  input: ` border p-1 w-full text-l`,
   button: `border p-4 ml-2 bg-purple-500 text-slate-100`,
-  count: `text-center p-2 `,
+  count: ` text-center p-2 `,
 };
 
 function Backend({ collectionType, itemType }) {
@@ -26,6 +26,7 @@ function Backend({ collectionType, itemType }) {
   const [itemName, setItemName] = useState('');
   const [itemCost, setItemCost] = useState();
   const [itemAmount, setItemAmount] = useState();
+  const [potentialRevenue, setpotentialRevenue] = useState(0);
 
   // Create new Item
   const createTodo = async (e) => {
@@ -54,11 +55,16 @@ function Backend({ collectionType, itemType }) {
   useEffect(() => {
     const q = query(collection(db, collectionType));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      
       let itemsArr = [];
       querySnapshot.forEach((doc) => {
         itemsArr.push({ ...doc.data(), id: doc.id });
+        
+        setpotentialRevenue( + (parseInt(doc.data().itemAmount)  *  parseInt(doc.data().itemCost)))
+        console.log(potentialRevenue)
       });
       setItems(itemsArr);
+
     });
     return () => unsubscribe();
   }, []);
@@ -111,7 +117,13 @@ function Backend({ collectionType, itemType }) {
         {items.length < 1 ? null : (
           <p
             className={style.count}
-          >{`You have ${items.length} orders to fulfill`}</p>
+          >{`You have  ${items.length} ${itemType} products in stock,  
+          Potential revenue =  $ ${potentialRevenue}
+          `}
+          
+          
+          </p>
+          
         )}
       </div>
 
