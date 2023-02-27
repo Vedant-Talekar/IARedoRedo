@@ -67,7 +67,7 @@ export default function Cart() {
             />
           ))}
         </ul>
-        Your total = {totalCost}
+        Your total = $ {totalCost}
         <button onClick={resetCart} className={style.button}>
           Checkout
         </button>

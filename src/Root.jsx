@@ -25,38 +25,50 @@ export default function Root() {
   };
 
   const style = {
-    bg: ` flex h-screen w-screen p-4 bg-gradient-to-r from-[#db1212] to-[#210c0c]`,
+    bg: ` flex justify-center h-screen w-screen p-4 bg-slate-800`,
+    pos: `m-2 justify-end`,
+    pos1: `m-1 justify-auto `,
+    
   };
 
   
  
 
   return (
-
-    <div className={style.bg}>
-      <div className="flex-column" > 
+    <>
+      <div className="flex-column absolute inset-x-0 bottom-0 left-10 h-16" > 
         <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l" onClick={clickHandler}>{buttonText}</button>
         {showFrontEnd ? (   
           <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" onClick={cartButtonHandler}>Show Cart</button> 
         ) : null}
       </div>
 
+    <div className={style.bg}>
+
+
       {showFrontEnd ? (
         showCart ? (
           <Cart />
         ) : (
           <>
-            <FrontEnd collectionType="food_collection" itemType="foods" />
-            <FrontEnd collectionType="drinks_collection" itemType="drinks" />
+            <div className={style.pos}>
+            <FrontEnd collectionType="food_collection" itemType="Foods" />
+            <FrontEnd collectionType="drinks_collection" itemType="Drinks" />
+            </div>
           </>
         )
       ) : (
         <>
-          <Backend collectionType="food_collection" itemType="Foods" />
+        <div className={style.pos1}>
+          <Backend collectionType="food_collection" itemType="Food" />
+          </div>
+          <div className={style.pos1}>
           <Backend collectionType="drinks_collection" itemType="Drinks" />
+          </div>
         </>
       )}
     </div>
+    </>
   );
 }
 

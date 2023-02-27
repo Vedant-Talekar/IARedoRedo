@@ -19,6 +19,7 @@ const style = {
   input: `border p-4 w-full text-xl`,
   button: `border p-4 ml-2 bg-purple-500 text-slate-100`,
   count: `text-center p-2`,
+  countOutput: 'text-center p-2 m2'
 };
 
 function FrontEnd({ collectionType, itemType }) {
@@ -81,11 +82,11 @@ function FrontEnd({ collectionType, itemType }) {
         {items.length < 1 ? null : (
           <p
             className={style.count}
-          >{`You have ${items.length} ${itemType} in inventory`}</p>
+          >{`You have ${items.length} ${itemType} in inventory!`}</p>
         )}
       </div>
 
-      <ul>
+      <ul className={style.countOutput} >
         {items.map((item, index) => (
           <SellItem
             key={index}

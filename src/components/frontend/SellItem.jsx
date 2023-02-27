@@ -3,9 +3,9 @@ import { FaRegTrashAlt } from 'react-icons/fa';
 import { cartStore } from '../../useStore';
 
 const style = {
-  li: `flex justify-between bg-slate-200 p-4 my-2 capitalize`,
+  li: `flex justify-between bg-slate-200 p-4 my-2 m-2 capitalize`,
   liComplete: `flex justify-between bg-slate-400 p-4 my-2 capitalize`,
-  row: `flex`,
+  row: `flex `,
   text: `ml-2 cursor-pointer`,
   textComplete: `ml-2 cursor-pointer line-through`,
   button: `cursor-pointer flex items-center`,
@@ -28,6 +28,7 @@ const Item = ({ item, deleteTodo, itemCost, itemAmount, itemName }) => {
       setAmountInCart(amountInCart + 1);
       setItemAmountState(itemAmountState - 1);
       addToTotalCost(itemCost);
+      
     } else {
       alert('No more available items');
     }
@@ -35,6 +36,7 @@ const Item = ({ item, deleteTodo, itemCost, itemAmount, itemName }) => {
 
   function sendToCart() {
     let dataCopy = cartData;
+    alert('Added to Cart!')
     dataCopy.push({
       amountInCart: amountInCart,
       itemName: itemName,
@@ -51,11 +53,9 @@ const Item = ({ item, deleteTodo, itemCost, itemAmount, itemName }) => {
     <div>
       <button onClick={clickController}>
         <li className={item.completed ? style.liComplete : style.li}>
+          {/* Space output from each other  */}
           <div className={style.row}>
-            Item Name:{itemNameState} Item Cost: ${itemCostState} itemAmount:{' '}
-            {itemAmountState}
-            Amount in Cart: {amountInCart}
-            Total cost: {amountInCart * itemCostState}
+           Item Name:  {itemNameState} Item Cost:  ${itemCostState} itemAmount: {' '} {itemAmountState} Amount in Cart: {amountInCart} Total cost: {amountInCart * itemCostState}
           </div>
         </li>
       </button>

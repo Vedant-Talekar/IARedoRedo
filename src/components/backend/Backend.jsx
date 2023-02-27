@@ -14,11 +14,11 @@ import {
 
 const style = {
   container: `bg-slate-100 max-w-[600px] w-full m-auto rounded-md shadow-xl p-7`,
-  heading: `text-3xl font-bold text-center text-gray-800 p-2`,
+  heading: `text-3xl font-bold text-center text-gray-800 p-2 `,
   form: `flex justify-between`,
   input: `border p-1 w-full text-l`,
   button: `border p-4 ml-2 bg-purple-500 text-slate-100`,
-  count: `text-center p-2`,
+  count: `text-center p-2 `,
 };
 
 function Backend({ collectionType, itemType }) {
@@ -30,14 +30,15 @@ function Backend({ collectionType, itemType }) {
   // Create new Item
   const createTodo = async (e) => {
     e.preventDefault(e);
+    // if empty
     if (itemName === '') {
       alert('Please enter a valid item name');
       return;
+    // if inputted
+    }else{
+      alert('Product added');
     }
-    if (itemCost === 0) {
-      alert('Please enter a valid item cost');
-      return;
-    }
+  
     await addDoc(collection(db, collectionType), {
       itemName: itemName,
       itemCost: itemCost,
@@ -48,8 +49,6 @@ function Backend({ collectionType, itemType }) {
     setItemCost(0);
     setItemAmount(0);
   };
-
-   
 
   // Read todo from firebase
   useEffect(() => {
@@ -63,8 +62,6 @@ function Backend({ collectionType, itemType }) {
     });
     return () => unsubscribe();
   }, []);
-
-
 
   // Update todo in firebase
   // const toggleComplete = async (todo) => {
@@ -109,7 +106,7 @@ function Backend({ collectionType, itemType }) {
           <button className={style.button}>
             <AiOutlinePlus size={30} />
           </button>
-        </form>     
+        </form>
 
         {items.length < 1 ? null : (
           <p
@@ -130,10 +127,6 @@ function Backend({ collectionType, itemType }) {
           />
         ))}
       </ul>
-
-
-     
-    
     </div>
   );
 }
