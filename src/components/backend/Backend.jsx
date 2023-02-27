@@ -125,7 +125,6 @@ function Backend({ collectionType, itemType }) {
           Potential revenue =  $ ${potentialRevenue}
           `}
           
-          
           </p>
           
         )}
