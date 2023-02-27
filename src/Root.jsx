@@ -49,10 +49,6 @@ export default function Root() {
     
   };
 
-  
-
-  
- 
 
   return (
     <>
@@ -65,7 +61,10 @@ export default function Root() {
       <div className="flex-column absolute inset-x-0 bottom-0 left-10 h-16" > 
         <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l" onClick={clickHandler}>{buttonText}</button>
         {showFrontEnd ? (   
-          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" onClick={cartButtonHandler}>Show Cart</button> 
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" onClick={cartButtonHandler}>
+            
+            {showCart ? <>Show Frontend</> : <>Show Cart</>}
+            </button> 
         ) : null}
       </div>
 

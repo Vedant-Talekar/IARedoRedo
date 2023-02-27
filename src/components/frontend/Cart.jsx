@@ -81,10 +81,10 @@ export default function Cart() {
         </button>
         </div>
       </div>
-      </div>
+      
 
 
-      <div className={style.pos}>
+      {/* <div className={style.pos}>
       <div className={style.container}>
         <h3 className={style.heading}>Counters</h3>
         Inventory Analysis:
@@ -104,15 +104,15 @@ export default function Cart() {
   <div>Your total = $ {totalCost}</div>
   <div>Potential Revenue</div>
   <div>Food Products in Stock</div>
-  <div>Drink Items in stock</div>
-</div>
+  <div>Drink Items in stock</div> */}
+
         
         
         
         
         
         
-        </div>
+
       </div>
   
   </div>

@@ -27,7 +27,7 @@ function Backend({ collectionType, itemType }) {
   const [itemName, setItemName] = useState('');
   const [itemCost, setItemCost] = useState();
   const [itemAmount, setItemAmount] = useState();
-  const [potentialRevenue, setpotentialRevenue] = useState(0);
+  const [potentialRevenue, setPotentialRevenue] = useState(0);
 
   // Create new Item
   const createTodo = async (e) => {
@@ -61,11 +61,14 @@ function Backend({ collectionType, itemType }) {
       querySnapshot.forEach((doc) => {
         itemsArr.push({ ...doc.data(), id: doc.id });
         
-        setpotentialRevenue( + (parseInt(doc.data().itemAmount)  *  parseInt(doc.data().itemCost)))
-        console.log(potentialRevenue)
+        // setpotentialRevenue( + (parseInt(doc.data().itemAmount)  *  parseInt(doc.data().itemCost)))
+        // console.log(potentialRevenue)
       });
       setItems(itemsArr);
-
+       let total = 0; 
+       for (let i = 0; i < itemsArr.length; i++) 
+      { total = total + itemsArr[i].itemAmount * itemsArr[i].itemCost}  
+      setPotentialRevenue(total);
     });
     return () => unsubscribe();
   }, []);
@@ -101,7 +104,7 @@ function Backend({ collectionType, itemType }) {
             className={style.input}
             type="number"
             placeholder="Item Cost"
-          />
+          />  
 
           <input
             value={itemAmount}
