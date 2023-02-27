@@ -19,6 +19,7 @@ const style = {
   input: ` border p-1 w-full text-l`,
   button: `border p-4 ml-2 bg-purple-500 text-slate-100`,
   count: ` text-center p-2 `,
+  
 };
 
 function Backend({ collectionType, itemType }) {
